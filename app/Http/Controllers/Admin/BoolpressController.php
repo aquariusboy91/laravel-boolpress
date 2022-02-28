@@ -14,7 +14,8 @@ class BoolpressController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::paginate(20);
+        return view('admin.posts.index', compact('posts'));
     }
 
     /**
@@ -24,7 +25,7 @@ class BoolpressController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create');
     }
 
     /**
@@ -35,7 +36,23 @@ class BoolpressController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required',
+        ]);
+
+        $data = $request->all();
+
+        $slug = Str::slug($data['title'], '-');
+        $postPresente = Post::where('slug', $slug)->first();
+
+        $newPost = new Post();
+
+        $newPost->fill($data);
+        $newPost->slug = $slug;
+        $newPost->save();
+
+        return redirect()->route('admin.posts.show', ['post' => $newPost]);
     }
 
     /**

@@ -16,3 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::middleware('auth') //controllo se sono loggato
+    ->namespace('Admin')
+    ->name('admin.') //name
+    ->prefix('admin') //uri
+    ->group(function () {
+        Route::get('/', 'HomeController@index')
+            ->name('home');
+    });
