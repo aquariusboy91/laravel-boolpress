@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Boolpress;
+use Illuminate\Support\Str;
+
+use App\Model\Boolpress;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class BoolpressController extends Controller
@@ -14,7 +17,7 @@ class BoolpressController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(20);
+        $posts = Boolpress::paginate(20);
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -44,9 +47,9 @@ class BoolpressController extends Controller
         $data = $request->all();
 
         $slug = Str::slug($data['title'], '-');
-        $postPresente = Post::where('slug', $slug)->first();
+        $postPresente = Boolpress::where('slug', $slug)->first();
 
-        $newPost = new Post();
+        $newPost = new Boolpress();
 
         $newPost->fill($data);
         $newPost->slug = $slug;
