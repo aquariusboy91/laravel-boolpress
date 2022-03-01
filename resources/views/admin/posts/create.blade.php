@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <form action="{{ route('admin.posts.store') }}" method="POST">
+                <form action="{{ route('admin.boolpresses.store') }}" method="POST">
                     @csrf
                     @method('POST')
 

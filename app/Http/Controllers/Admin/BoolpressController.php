@@ -64,10 +64,9 @@ class BoolpressController extends Controller
      * @param  \App\Boolpress  $boolpress
      * @return \Illuminate\Http\Response
      */
-    public function show(string $slug)
+    public function show(Boolpress $boolpress)
     {
-        $boolpress = Boolpress::where('slug', $slug)->first();
-        return view('admin.posts.show', ['post' => $boolpress]);
+        return view('admin.posts.show', ['boolpress' => $boolpress]);
     }
 
     /**
@@ -99,9 +98,8 @@ class BoolpressController extends Controller
      * @param  \App\Boolpress  $boolpress
      * @return \Illuminate\Http\Response
      */
-    public function destroy(string $slug)
+    public function destroy(Boolpress $boolpress)
     {
-        $boolpress = Boolpress::where('slug', $slug)->first();
         $boolpress->delete();
 
         return redirect()->route('admin.posts.index')->with('status', "Post id $boolpress->id deleted");
