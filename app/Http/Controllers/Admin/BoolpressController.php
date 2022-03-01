@@ -66,7 +66,7 @@ class BoolpressController extends Controller
      */
     public function show(Boolpress $boolpress)
     {
-        //
+        return view('admin.posts.show', ['post' => $boolpress]);
     }
 
     /**
