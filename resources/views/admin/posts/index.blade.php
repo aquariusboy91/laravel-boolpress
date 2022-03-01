@@ -39,7 +39,7 @@
                             <td><a class="btn btn-info" href="{{ route('admin.posts.edit', $post->slug) }}">Modify</a>
                             </td>
                             <td>
-                                <form action="{{ route('admin.posts.destroy', $post) }}" method="post">
+                                <form action="{{ route('admin.posts.destroy', $post->slug) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <input class="btn btn-danger" type="submit" value="Delete">
