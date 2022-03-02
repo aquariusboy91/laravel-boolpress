@@ -55,7 +55,7 @@ class BoolpressController extends Controller
         $newPost->slug = $slug;
         $newPost->save();
 
-        return redirect()->route('admin.posts.show', ['post' => $newPost]);
+        return redirect()->route('admin.boolpresses.show', ['post' => $newPost]);
     }
 
     /**
@@ -66,7 +66,7 @@ class BoolpressController extends Controller
      */
     public function show(Boolpress $boolpress)
     {
-        return view('admin.posts.show', ['boolpress' => $boolpress]);
+        return view('admin.posts.show', ['post' => $boolpress]);
     }
 
     /**
@@ -102,6 +102,6 @@ class BoolpressController extends Controller
     {
         $boolpress->delete();
 
-        return redirect()->route('admin.posts.index')->with('status', "Post id $boolpress->id deleted");
+        return redirect()->route('admin.boolpresses.index')->with('status', "Post id $boolpress->id deleted");
     }
 }
