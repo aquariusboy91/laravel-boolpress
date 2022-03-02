@@ -18,6 +18,11 @@ class Boolpress extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function category() {
+
+        return $this->belongsTo('App\Model\Category');
+    }
+
     /**
      * Get the route key for the model.
      *

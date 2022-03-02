@@ -34,9 +34,9 @@
                             <td>{{ $post->title }}</td>
                             <td>{{ $post->created_at }}</td>
                             <td>{{ $post->updated_at }}</td>
-                            <td><a class="btn btn-primary" href="{{ route('admin.boolpresses.show', $post->id) }}">View</a>
+                            <td><a class="btn btn-primary" href="{{ route('admin.boolpresses.show', $post->slug) }}">View</a>
                             </td>
-                            <td><a class="btn btn-info" href="{{ route('admin.boolpresses.edit', $post->id) }}">Modify</a>
+                            <td><a class="btn btn-info" href="{{ route('admin.boolpresses.edit', $post->slug) }}">Modify</a>
                             </td>
                             <td>
                                 <form action="{{ route('admin.boolpresses.destroy', $post) }}" method="post">

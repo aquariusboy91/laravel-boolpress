@@ -4,6 +4,9 @@
     <div class="container">
         <div class="row">
             <div class="col">
+                <h1>
+                    Create new post {{Auth::User()->id}}
+                </h1>
                 <form action="{{ route('admin.boolpresses.store') }}" method="POST">
                     @csrf
                     @method('POST')
