@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Str;
 
 use App\Model\Boolpress;
+use App\Model\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BoolpressController extends Controller
 {
@@ -28,7 +30,8 @@ class BoolpressController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $categories = Category::all();
+        return view('admin.posts.create',['categories'=> $categories]);
     }
 
     /**
@@ -42,9 +45,11 @@ class BoolpressController extends Controller
         $validateData = $request->validate([
             'title' => 'required|max:255',
             'content' => 'required',
+            'category_id'=>'exists:App\Model\Category,id'
         ]);
 
         $data = $request->all();
+        $data['user_id'] = Auth::user()->id;
 
         $slug = Str::slug($data['title'], '-');
         $postPresente = Boolpress::where('slug', $slug)->first();
@@ -55,7 +60,7 @@ class BoolpressController extends Controller
         $newPost->slug = $slug;
         $newPost->save();
 
-        return redirect()->route('admin.boolpresses.show', ['post' => $newPost]);
+        return redirect()->route('admin.boolpresses.show', $newPost);
     }
 
     /**
@@ -77,7 +82,12 @@ class BoolpressController extends Controller
      */
     public function edit(Boolpress $boolpress)
     {
-        
+        if (Auth::user()->id != $boolpress->user_id) {
+            abort('403');
+        }
+        $categories = Category::all();
+
+        return view('admin.posts.edit', ['post' => $boolpress, 'categories' => $categories]);
     }
 
     /**
@@ -89,7 +99,25 @@ class BoolpressController extends Controller
      */
     public function update(Request $request, Boolpress $boolpress)
     {
-        //
+        $data = $request->all();
+        if (Auth::user()->id != $boolpress->user_id) {
+            abort('403');
+        }
+
+        
+
+
+        $postValidate = $request->validate(
+            [
+                'title' => 'required|max:240',
+                'content' => 'required',
+                'category_id' => 'exists:App\Model\Category,id'
+            ]
+        );
+
+        $boolpress->update();
+
+        return redirect()->route('admin.boolpresses.show', $boolpress);
     }
 
     /**

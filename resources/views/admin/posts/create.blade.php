@@ -10,6 +10,19 @@
                 <form action="{{ route('admin.boolpresses.store') }}" method="POST">
                     @csrf
                     @method('POST')
+                    <div class="mb-3">
+                        <select class="form-select" name="category_id">
+                        <option value="">Open this select menu</option>
+                            @foreach ($categories as $category)
+                                <option value="{{$category->id}}"> {{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('category_id')
+                            <div class="alert alert-danger">
+                                    {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
 
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
