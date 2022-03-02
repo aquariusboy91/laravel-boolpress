@@ -42,8 +42,9 @@ class User extends Authenticatable
         return $this->hasOne('App\Model\UserInfo');
     }
 
-    public function Boolpress()
+    public function boolpresses()
     {
         return $this->hasMany('App\Model\Boolpress');
     }
+
 }
