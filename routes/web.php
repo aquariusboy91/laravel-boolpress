@@ -27,4 +27,5 @@ Route::middleware('auth') //controllo se sono loggato
         Route::get('/', 'HomeController@index')
             ->name('home');
             Route::resource('boolpresses', 'BoolpressController');
+            Route::resource('categories', 'CategoryController');
     });
