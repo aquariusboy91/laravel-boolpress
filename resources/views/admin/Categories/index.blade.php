@@ -37,6 +37,19 @@
                             <td><a class="btn btn-primary"
                                     href="{{ route('admin.categories.show', $category->id) }}">View</a>
                             </td>
+                            <td><a class="btn btn-primary"
+                                    href="{{ route('admin.categories.create', $category->id) }}">Create</a>
+                            </td>
+                            <td><a class="btn btn-info" href="{{ route('admin.categories.edit', $category) }}">Modify</a>
+                            </td>
+                            <td>
+                                <form action="{{ route('admin.categories.destroy', $category) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input class="btn btn-danger" type="submit" value="Delete">
+                                </form>
+
+                            </td>
                         </tr>
                     @endforeach
 
