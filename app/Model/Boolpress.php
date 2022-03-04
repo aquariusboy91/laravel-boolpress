@@ -48,4 +48,9 @@ class Boolpress extends Model
 
         return (empty($newSlug)) ? $slug : $newSlug;
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany('App\Model\Tag');
+    }
 }
