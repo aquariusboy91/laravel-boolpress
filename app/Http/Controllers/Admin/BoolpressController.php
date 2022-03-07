@@ -9,6 +9,7 @@ use App\Model\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class BoolpressController extends Controller
 {
@@ -48,11 +49,15 @@ class BoolpressController extends Controller
             'category_id'=>'exists:App\Model\Category,id'
         ]);
 
+       
+
         $data = $request->all();
         $data['user_id'] = Auth::user()->id;
 
         $slug = Str::slug($data['title'], '-');
         $postPresente = Boolpress::where('slug', $slug)->first();
+
+        $img_path = Storage::put('uploads' , $data['image']);
 
         $newPost = new Boolpress();
 

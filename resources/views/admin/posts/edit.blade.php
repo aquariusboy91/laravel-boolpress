@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="row">
-            <form action="{{ route('admin.boolpresses.update', $post->id) }}" method="post">
+            <form action="{{ route('admin.boolpresses.update', $post->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
                 <div class="mb-3">
@@ -54,6 +54,13 @@
                         </div>
                     @enderror
                 </div>
+                <div class="mb-3">
+                    <img src="{{asset('storage/' . $post->image)}}" alt="">
+                </div>
+                <div class="mb-3">
+                        <label for="image" class="form-label">Image</label>
+                        <input class="form-control" type="file" id="image" name="image">
+                    </div>
 
                 {{-- <input type="hidden" name="user_id" id="user_id" value="{{ Auth::user()->id }}"> --}}
 

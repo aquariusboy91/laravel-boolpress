@@ -15,18 +15,10 @@ class BoolpressTagSeeder extends Seeder
     {
         $boolpresses= Boolpress::all();
         $tags= Tag::all();
-        foreach ($boolpresses as $boolpress) {
-            $tagRandom = Tag::inRandomOrder()->first()->id;
-            $boolpress->tags()->attach($tagRandom);
-
-            foreach ($tags as $tag) {
-                $rand =random_int(0,4);
-                if((bool) $rand) {
-                    if($tagRandom != $boolpress->id) {
-                        $boolpress->tags()->attach($boolpress->id);
-                    }
-                }
-            }
-        }
+        
+        foreach ($tags as $tag) {
+      $boolpresses = Boolpress::inRandomOrder()->limit(6)->get();
+      $tag->boolpress()->attach($boolpresses);
+}
     }
 }

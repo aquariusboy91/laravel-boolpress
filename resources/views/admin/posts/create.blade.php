@@ -7,9 +7,13 @@
                 <h1>
                     Create new post {{Auth::User()->id}}
                 </h1>
-                <form action="{{ route('admin.boolpresses.store') }}" method="POST">
+                <form action="{{ route('admin.boolpresses.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('POST')
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Image</label>
+                        <input class="form-control" type="file" id="image" name="image">
+                    </div>
                     <div class="mb-3">
                         <select class="form-select" name="category_id">
                         <option value="">Open this select menu</option>

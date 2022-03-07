@@ -10,6 +10,7 @@ class Boolpress extends Model
         'title',
         'content',
         'slug',
+        'image',
         'created_at',
         'updated_at',
     ];

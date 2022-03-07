@@ -11,6 +11,11 @@
         </div>
         <div class="row">
             <div class="col">
+               <img src=" {{asset('storage/' .$post->cover_image) }}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
                 <h1>
                     {{ $post->title }}
                 </h1>
