@@ -11,7 +11,7 @@
         </div>
         <div class="row">
             <div class="col">
-               <img src=" {{asset('storage/' .$post->cover_image) }}">
+               <img class="w-50 text-center" src=" {{asset('storage/' .$post->image) }}">
             </div>
         </div>
         <div class="row">

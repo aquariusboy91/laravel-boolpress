@@ -58,6 +58,7 @@ class BoolpressController extends Controller
         $postPresente = Boolpress::where('slug', $slug)->first();
 
         $img_path = Storage::put('uploads' , $data['image']);
+        $data['image'] = $img_path;
 
         $newPost = new Boolpress();
 

@@ -21,6 +21,7 @@ class BoolpressSeeder extends Seeder
             $newPost = new Boolpress();
             $newPost->title = $faker->sentence(3, true);
             $newPost->content = $faker->paragraphs(5, true);
+            $newPost->image = "";
             $newPost->slug = Str::slug($newPost->title . '-' . $i, '-');
             $newPost->user_id = User::inRandomOrder()->first()->id;
             $newPost->category_id = Category::inRandomOrder()->first()->id;
