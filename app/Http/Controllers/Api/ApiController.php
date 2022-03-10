@@ -18,4 +18,14 @@ class ApiController extends Controller
             'results' =>  $boolpress,
         ]);
     }
+
+    public function inRandomOrder () {
+
+        $boolpress = Boolpress::inRandomOrder()->limit(4)->get();
+        return response()->json([
+            'response' => true,
+            'results' =>  ['data' => $boolpress],
+        ]);
+
+    }
 }
