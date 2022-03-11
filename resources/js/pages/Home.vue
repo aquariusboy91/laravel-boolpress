@@ -3,10 +3,10 @@
       <div class="container-fluid">
           <div class="row">
               <div class="col">
-                  <h1>Home</h1>
+                  <h1>HOME</h1>
               </div>
           </div>
-          <Main :cards="cards"> </Main>
+          <Main :cards="cards"></Main>
       </div>
   </div>
 </template>
@@ -31,9 +31,10 @@ export default {
         }
     },
      created(){
-          Axios.get('http://127.0.0.1:8000/api/boolpress').then(
+          Axios.get('http://127.0.0.1:8000/api/boolpress/random').then(
             (result) => {
-              this.cards.boolpress = result.data.results.data;
+              this.cards.boolpress= result.data.results.data;
+              
             });
      },
 
