@@ -30,7 +30,7 @@ const router = new VueRouter ({
             component: Boolpresses
         },
         {
-            path: '/boolpress/:id',
+            path: '/boolpresses/:id',
             name: 'boolpress',
             props: true, 
             component: Boolpress

@@ -20,3 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/boolpress', 'Api\ApiController@index');
 Route::get('/boolpress/random', 'Api\ApiController@inRandomOrder');
+
+Route::get('/boolpress/{id}', 'Api\ApiController@show');

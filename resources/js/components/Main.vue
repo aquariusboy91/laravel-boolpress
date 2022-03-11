@@ -7,6 +7,9 @@
                         <h5 class="card-title">{{ item.title }}</h5>
                         <p class="card-text">{{ item.content }}</p>
                     </div>
+                    <router-link class="btn btn-info" 
+            :to="{ name: 'boolpress', params: { id: item.id } }">
+            View</router-link>
                 </div>
             </div>
         </div>
